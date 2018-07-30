@@ -11,7 +11,6 @@ namespace CSingleton_Lab9
     {
         static void Main(string[] args)
         {
-
             List<string> names = new List<string> { "Alex", "Joan", "Jack", "Alice", "Matt" };
 
             List<string> hometown = new List<string> { "Detroit", "Chicago", "Philadelphia", "London", "Boston" };
@@ -105,20 +104,20 @@ namespace CSingleton_Lab9
                     catch (ArgumentNullException)
                     {
                         Console.WriteLine("The entry cannot be null. Press any key to continue.");
-                        learn = true;
+                        //learn = true;
                         Console.ReadKey();
                     }
-                    catch (IndexOutOfRangeException)
+                    catch (ArgumentOutOfRangeException)
                     {
                         Console.WriteLine($"Please enter a number in the range of {1} to {names.Count()}. Press any key to continue.");
-                        learn = true;
+                        //learn = true;
                         Console.ReadKey();
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                         Console.WriteLine("Press any key to continue");
-                        learn = true;
+                        //learn = true;
                         Console.ReadKey();
                     }
                 }
@@ -158,22 +157,34 @@ namespace CSingleton_Lab9
                             Console.WriteLine("Would you like to know more? (y/n)");
                             learn2 = YesOrNo(Console.ReadLine());
                         }
+                        else
+                        {
+                            Console.WriteLine("Please make a valid selection.");
+                        }
                     }
-                    catch (IndexOutOfRangeException ex)
+                    catch (ArgumentOutOfRangeException ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
                     }
                     catch (FormatException ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
                     }
                     catch (ArgumentNullException ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadKey();
                     }
                 }
                 Console.WriteLine("Would you like to start over? (y/n)");
@@ -206,6 +217,6 @@ namespace CSingleton_Lab9
             return int.Parse(input);
 
         }
-
+        
     }
 }
