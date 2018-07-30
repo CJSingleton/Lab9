@@ -12,3 +12,10 @@ C:\Users\cjsin\source\repos\GC_Labs\CSingleton_Lab9\CSingleton_Lab9\obj\Debug\CS
 C:\Users\cjsin\source\repos\GC_Labs\CSingleton_Lab9\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.csproj.CoreCompileInputs.cache
 C:\Users\cjsin\source\repos\GC_Labs\CSingleton_Lab9\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.exe
 C:\Users\cjsin\source\repos\GC_Labs\CSingleton_Lab9\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.pdb
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\bin\Debug\CSingleton_Lab9.exe.config
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\bin\Debug\CSingleton_Lab9.exe
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\bin\Debug\CSingleton_Lab9.pdb
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.csprojAssemblyReference.cache
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.csproj.CoreCompileInputs.cache
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.exe
+C:\Users\cjsin\OneDrive\Desktop\Lab9-master\Lab9-master\CSingleton_Lab9\obj\Debug\CSingleton_Lab9.pdb

@@ -11,25 +11,65 @@ namespace CSingleton_Lab9
     {
         static void Main(string[] args)
         {
-            List<string> names = new List<string> { "Alex", "Joan", "Jack", "Alice", "Matt" };
+            List<Student> Roster = new List<Student>();
 
-            List<string> hometown = new List<string> { "Detroit", "Chicago", "Philadelphia", "London", "Boston" };
+            Student temp = new Student();
+            
+            temp.FirstName = "Alex";
+            temp.LastName = "Henderson";
+            temp.Hometown = "Detroit";
+            temp.FavoriteFood = "Pizza";
+            temp.FavoriteColor = "Green";
 
-            List<string> favFood = new List<string> { "Pizza", "Ice Cream", "Pad Thai", "Steak", "Pasta" };
+            Roster.Add(temp);
+            temp = new Student();
 
-            List<string> favColor = new List<string> { "Green", "Blue", "Red", "Yellow", "Orange" };
+            temp.FirstName = "Joan";
+            temp.LastName = "Sprocket";
+            temp.Hometown = "Chicago";
+            temp.FavoriteFood = "Ice Cream";
+            temp.FavoriteColor = "Blue";
 
-            List<string> roster = new List<string> { "Hometown", "Favorite Food", "Favorite Color" };
+            Roster.Add(temp);
+            temp = new Student();
+
+            temp.FirstName = "Jack";
+            temp.LastName = "Jackson";
+            temp.Hometown = "Philedalphia";
+            temp.FavoriteFood = "Pad Thai";
+            temp.FavoriteColor = "Red";
+
+            Roster.Add(temp);
+            temp = new Student();
+
+            temp.FirstName = "Alice";
+            temp.LastName = "Redding";
+            temp.Hometown = "London";
+            temp.FavoriteFood = "Steak";
+            temp.FavoriteColor = "Yellow";
+
+            Roster.Add(temp);
+            temp = new Student();
+
+            temp.FirstName = "Matt";
+            temp.LastName = "Smith";
+            temp.Hometown = "Boston";
+            temp.FavoriteFood = "Pasta";
+            temp.FavoriteColor = "Orange";
+
+            Roster.Add(temp);
+
+            List<string> infoOptions = new List<string> { "Hometown", "Favorite Food", "Favorite Color"};
 
             bool exit = true;
             while (exit == true)
             {
-                Console.WriteLine("------------------------");
+                
                 Console.WriteLine("------------------------");
                 Console.WriteLine("Welcome to our class! This is the current class roster:");
-                for (int i = 0; i < names.Count(); i++)
+                for (int i = 0; i < Roster.Count(); i++)
                 {
-                    Console.WriteLine($"{i + 1}. {names[i]}");
+                    Console.WriteLine($"{i + 1}. {Roster[i].FirstName} {Roster[i].LastName}");
                 }
                 Console.WriteLine("------------------------");
 
@@ -73,14 +113,21 @@ namespace CSingleton_Lab9
                 }
                 while (add1 == true)
                 {
-                    Console.WriteLine("Enter the new student's name:");
-                    names.Add(Console.ReadLine());
+                    temp = new Student();
+
+                    Console.WriteLine("Enter the new student's first name:");
+                    temp.FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter the new student's last name:");
+                    temp.LastName = Console.ReadLine();
                     Console.WriteLine("Enter the new student's hometown:");
-                    hometown.Add(Console.ReadLine());
+                    temp.Hometown = Console.ReadLine();
                     Console.WriteLine("Enter the new student's favorite food:");
-                    favFood.Add(Console.ReadLine());
+                    temp.FavoriteFood = Console.ReadLine();
                     Console.WriteLine("Enter the new student's favorite color:");
-                    favColor.Add(Console.ReadLine());
+                    temp.FavoriteColor = Console.ReadLine();
+
+                    Roster.Add(temp);
+
                     Console.WriteLine("All done! Would you like to add another new student to this list? (y/n)");
                     learn = true;
                     add1 = YesOrNo(Console.ReadLine().ToLower());
@@ -92,101 +139,101 @@ namespace CSingleton_Lab9
                     {
                         Console.WriteLine("------------------------");
                         Console.WriteLine("Which student would you like to learn about? (choose a number)");
-                        for (int i = 0; i < names.Count(); i++)
+                        for (int i = 0; i < Roster.Count(); i++)
                         {
-                            Console.WriteLine($"{i + 1}. {names[i]}");
+                            Console.WriteLine($"{i + 1}. {Roster[i].FirstName} {Roster[i].LastName}");
                         }
                         Console.WriteLine("------------------------");
                         input = ValidateNum(Console.ReadLine());
-                        string n = names[input-1];
+                        string n = Roster[input-1].FirstName;
                         learn = false;
                     }
                     catch (ArgumentNullException)
                     {
                         Console.WriteLine("The entry cannot be null. Press any key to continue.");
-                        //learn = true;
+                        
                         Console.ReadKey();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        Console.WriteLine($"Please enter a number in the range of {1} to {names.Count()}. Press any key to continue.");
-                        //learn = true;
+                        Console.WriteLine($"Please enter a number in the range of {1} to {Roster.Count()}. Press any key to continue.");
+                        
                         Console.ReadKey();
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                         Console.WriteLine("Press any key to continue");
-                        //learn = true;
+                        
                         Console.ReadKey();
                     }
                 }
                 
                 string selection = "0" ;
                 bool learn2 = true;
-                while (learn2 == true)
-                {
-                    try
-                    {  
-                        Console.WriteLine("------------------------");
-                        Console.WriteLine($"You have chosen student [{input}]: {names[input - 1]}. What would you like to know about {names[input - 1]}? (choose from the following list)");
-                        for (int i = 0; i < roster.Count(); i++)
+                    do
+                    {
+                        try
                         {
-                            Console.WriteLine($"{i + 1}. {roster[i]}");
-                        }
-                        Console.WriteLine("------------------------");
-                        
-                        selection = Console.ReadLine().ToLower();
+                            Console.WriteLine("------------------------");
+                            Console.WriteLine($"You have chosen student [{input}]: {Roster[input - 1].FirstName} {Roster[input - 1].LastName}. What would you like to know about {Roster[input - 1].FirstName}? (choose from the following list)");
+                            for (int i = 0; i < infoOptions.Count(); i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {infoOptions[i]}");
+                            }
+                            Console.WriteLine("------------------------");
 
-                        if ((selection == "hometown") || (selection == 1.ToString()))
-                        {
-                            Console.WriteLine($"{names[input - 1]} is from {hometown[input - 1]}.");
-                            Console.WriteLine("Would you like to know more? (y/n)");
-                            learn2 = YesOrNo(Console.ReadLine());
+                            selection = Console.ReadLine().ToLower();
 
+                            if ((selection == "hometown") || (selection == 1.ToString()))
+                            {
+                                Console.WriteLine($"{Roster[input - 1].FirstName} is from {Roster[input - 1].Hometown}.");
+                                Console.WriteLine("Would you like to know more? (y/n)");
+                                learn2 = YesOrNo(Console.ReadLine());
+
+                            }
+                            else if ((selection == "favorite food") || (selection == 2.ToString()))
+                            {
+                                Console.WriteLine($"{Roster[input - 1].FirstName}'s favorite food is {Roster[input - 1].FavoriteFood}.");
+                                Console.WriteLine("Would you like to know more? (y/n)");
+                                learn2 = YesOrNo(Console.ReadLine());
+                            }
+                            else if ((selection == "favorite color") || (selection == (3).ToString()))
+                            {
+                                Console.WriteLine($"{Roster[input - 1].FirstName}'s favorite color is {Roster[input - 1].FavoriteColor}.");
+                                Console.WriteLine("Would you like to know more? (y/n)");
+                                learn2 = YesOrNo(Console.ReadLine());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please make a valid selection.");
+                            }
                         }
-                        if ((selection == "favorite food") || (selection == 2.ToString()))
+                        catch (ArgumentOutOfRangeException ex)
                         {
-                            Console.WriteLine($"{names[input - 1]}'s favorite food is {favFood[input - 1]}.");
-                            Console.WriteLine("Would you like to know more? (y/n)");
-                            learn2 = YesOrNo(Console.ReadLine());
+                            Console.WriteLine(ex);
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                         }
-                        if ((selection == "favorite color") || (selection == (3).ToString()))
+                        catch (FormatException ex)
                         {
-                            Console.WriteLine($"{names[input - 1]}'s favorite color is {favColor[input - 1]}.");
-                            Console.WriteLine("Would you like to know more? (y/n)");
-                            learn2 = YesOrNo(Console.ReadLine());
+                            Console.WriteLine(ex);
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                         }
-                        else
+                        catch (ArgumentNullException ex)
                         {
-                            Console.WriteLine("Please make a valid selection.");
+                            Console.WriteLine(ex);
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                         }
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("Press any key to continue.");
-                        Console.ReadKey();
-                    }
-                    catch (FormatException ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("Press any key to continue.");
-                        Console.ReadKey();
-                    }
-                    catch (ArgumentNullException ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("Press any key to continue.");
-                        Console.ReadKey();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("Press any key to continue.");
-                        Console.ReadKey();
-                    }
-                }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
+                        }
+                    } while (learn2 == true);
                 Console.WriteLine("Would you like to start over? (y/n)");
                 exit = YesOrNo(Console.ReadLine().ToLower());
             }
